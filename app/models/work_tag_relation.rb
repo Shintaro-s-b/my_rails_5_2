@@ -1,0 +1,2 @@
+class WorkTagRelation < ApplicationRecord
+end
