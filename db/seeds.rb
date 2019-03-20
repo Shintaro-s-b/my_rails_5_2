@@ -6,12 +6,27 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-raw_works = [
+works = [
   [1,"hoge","http://www.example.com"],
   [2,"fuga","https://www.example.com"],
-]
-
-works = raw_works.map { |w| { id: w[0], name: w[1], url: w[2] } }
-
+].map { |w| { id: w[0], name: w[1], url: w[2] } }
 Work.delete_all
 Work.create(works)
+
+tags = [
+  [1,"aaa"],
+  [2,"bbb"],
+  [3,"ccc"],
+  [4,"ddd"],
+].map { |t| { id: t[0], name: t[1] } }
+Tag.delete_all
+Tag.create(tags)
+
+work_tag_relations = [
+  [1,1,1],
+  [2,1,2],
+  [3,2,3],
+  [4,3,4],
+].map { |wtr| { id: wtr[0], work_id: wtr[1], tag_id: wtr[2] } }
+WorkTagRelation.delete_all
+WorkTagRelation.create(work_tag_relations)
