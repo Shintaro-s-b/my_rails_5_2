@@ -14,4 +14,9 @@ class WorksController < ApplicationController
     end
     redirect_to :action => "index"
   end
+
+  def comment
+    Comment.create({message: params[:message], work_id: params[:work_id]})
+    redirect_to :action => "index"
+  end
 end

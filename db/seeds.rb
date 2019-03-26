@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 works = [
-  [1,"hoge","http://www.example.com"],
-  [2,"fuga","https://www.example.com"],
-  [3,"moga","http://hogehoge.com"]
-].map { |w| { id: w[0], name: w[1], url: w[2] } }
+  [1,"hoge","http://www.example.com", "hogehoge"],
+  [2,"fuga","https://www.example.com", "fugafuga"],
+  [3,"moga","http://hogehoge.com", "mogomogo"]
+].map { |w| { id: w[0], name: w[1], url: w[2], description: w[3] } }
 Work.delete_all
 Work.create(works)
 
