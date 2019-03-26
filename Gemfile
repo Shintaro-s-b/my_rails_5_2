@@ -64,3 +64,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'therubyracer'
 gem 'pg'
 gem "font-awesome-rails"
+gem "google-cloud-storage", "~> 1.3", require: false
+gem 'mini_magick'

@@ -9,6 +9,7 @@
 works = [
   [1,"hoge","http://www.example.com"],
   [2,"fuga","https://www.example.com"],
+  [3,"moga","http://hogehoge.com"]
 ].map { |w| { id: w[0], name: w[1], url: w[2] } }
 Work.delete_all
 Work.create(works)

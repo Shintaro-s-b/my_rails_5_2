@@ -1,9 +1,31 @@
 <h1>Works#index</h1>
 <p>Find me in app/views/works/index.html.erb</p>
 
-<% @works.each do |work| %>
-  Name: <%= work.name %><br>
-  Url: <%= work.url %><br>
-<% end %>
+<table border="1">
+  <tr>
+    <th>name</th>
+    <th>url</th>
+    <th>registered image</th>
+    <th>upload</th>
+  </tr>
+  <% @works.each do |work| %>
+  <tr>
+    <td><%= work.name %></td>
+    <td><%= work.url %></td>
+    <td><% if work.image.attached? %><%= image_tag work.image %><% end %></td>
+    <td>
+    <%= form_with url: "/works/upload"  do |form| %>
+<!--
+      <%= form.file_field :attachments, multiple: true, direct_upload: true %>
+-->
+      <%= form.file_field :image %><br>
+      <input type="hidden" name="work_id" value=<%= work.id %>>
+      <%= form.submit %>
+    <% end %>
+    </td>
+  </tr>
+  <% end %>
+</table>
 
-<%= fa_icon 'cat 2x' %>
+<%= fa_icon 'car 2x' %>
+
