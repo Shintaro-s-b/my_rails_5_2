@@ -66,3 +66,5 @@ gem 'pg'
 gem "font-awesome-rails"
 gem "google-cloud-storage", "~> 1.3", require: false
 gem 'mini_magick'
+gem 'react-rails'
+gem 'webpacker', '<4.0'
