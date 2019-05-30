@@ -11,37 +11,66 @@
     <th>url</th>
     <th>registered image</th>
     <th>comments</th>
+    <th>reset comment</th>
     <th>add comment</th>
     <th>upload</th>
+    <th>description</th>
   </tr>
   <% @works.each do |work| %>
   <tr>
-    <td><%= work.name %></td>
-    <td><%= work.url %></td>
+    <td>
+      <%= form_with url: "/works/set_name"  do |form| %>                                                                                                                         
+        <%= form.text_field(:name, { value: work.name }) %><br>                                                                                                           
+        <input type="hidden" name="work_id" value=<%= work.id %>>                                                                                                                       
+        <%= form.submit %>                                                                                                                                                              
+      <% end %>
+    </td>
+
+    <td>
+      <%= form_with url: "/works/set_url"  do |form| %>                                                                                                                         
+        <%= form.text_field(:url, { value: work.url }) %><br>                                                                                                           
+        <input type="hidden" name="work_id" value=<%= work.id %>>                                                                                                                       
+        <%= form.submit %>                                                                                                                                                              
+      <% end %>
+    </td>
+
     <td><% if work.image.attached? %><%= image_tag work.image %><% end %></td>
     <td>
-    <% if work.comments.present? %>
-      <% work.comments.each do |comment| %>
-        <%= comment.message %><br>
+      <% if work.comments.present? %>
+        <% work.comments.each do |comment| %>
+          <%= comment.message %><br>
+        <% end %>
       <% end %>
-    <% end %>
     </td>
     <td>
-    <%= form_with url: "/works/comment"  do |form| %>
-      <%= form.text_field :message %><br>
-      <input type="hidden" name="work_id" value=<%= work.id %>>
-      <%= form.submit %>
-    <% end %>
+      <%= form_with url: "/works/reset_comment"  do |form| %>
+        <input type="hidden" name="work_id" value=<%= work.id %>>
+        <%= form.submit %>
+      <% end %>
     </td>
     <td>
-    <%= form_with url: "/works/upload"  do |form| %>
+      <%= form_with url: "/works/add_comment"  do |form| %>
+        <%= form.text_field :message %><br>
+        <input type="hidden" name="work_id" value=<%= work.id %>>
+        <%= form.submit %>
+      <% end %>
+    </td>
+    <td>
+      <%= form_with url: "/works/upload"  do |form| %>
 <!--
-      <%= form.file_field :attachments, multiple: true, direct_upload: true %>
+        <%= form.file_field :attachments, multiple: true, direct_upload: true %>
 -->
-      <%= form.file_field :image %><br>
-      <input type="hidden" name="work_id" value=<%= work.id %>>
-      <%= form.submit %>
-    <% end %>
+        <%= form.file_field :image %><br>
+        <input type="hidden" name="work_id" value=<%= work.id %>>
+        <%= form.submit %>
+      <% end %>
+    </td>
+    <td>
+      <%= form_with url: "/works/set_description"  do |form| %>
+        <%= form.text_field(:description, { value: work.description }) %><br>
+        <input type="hidden" name="work_id" value=<%= work.id %>>
+        <%= form.submit %>
+      <% end %>
     </td>
   </tr>
   <% end %>
