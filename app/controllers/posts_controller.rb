@@ -11,4 +11,9 @@ class PostsController < ApplicationController
     Post.create({ title: params[:title], body: params[:body] }) if params[:title].present? && params[:body].present?
     redirect_to :action => "manage"
   end
+
+  def delete
+    Post.find(params['post_id']).delete if(params['post_id'])
+    redirect_to :action => 'manage'
+  end
 end

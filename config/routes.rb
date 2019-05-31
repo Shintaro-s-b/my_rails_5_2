@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'posts/index'
   get 'posts/manage'
   post 'posts/new'
+  post 'posts/delete'
   get 'works/index'
   get 'works/manage'
   post 'works/upload'
