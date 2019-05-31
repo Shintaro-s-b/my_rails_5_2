@@ -1,7 +1,7 @@
 <h1>ブログ</h1>
 
 <% @posts.each do |post| %>
-<article claiss='post>
+<div class='post>
   <div class='post_title'>
     <h2>
       <%= post.title %>
@@ -10,5 +10,5 @@
   <div class='post_body'>
     <%= post.body.html_safe %>
   </div>
-</article>
+</div>
 <% end %>

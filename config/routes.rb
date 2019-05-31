@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'abouts/index'
+  get 'abouts/manage'
   get 'posts/index'
   get 'posts/manage'
   post 'posts/new'
