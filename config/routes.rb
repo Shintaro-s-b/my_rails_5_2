@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'posts/index'
+  get 'posts/manage'
+  post 'posts/new'
   get 'works/index'
-  get 'works/show'
+  get 'works/manage'
   post 'works/upload'
   post 'works/add_comment'
   post 'works/reset_comment'

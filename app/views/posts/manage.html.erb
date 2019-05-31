@@ -1,0 +1,24 @@
+<h1>Posts#manage</h1>
+<p>Find me in app/views/posts/manage.html.erb</p>
+
+
+<table border="1">
+  <tr>
+    <th>title</th>
+    <th>body</th>
+  </tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post['title'] %></td>
+      <td><%= post['body'].html_safe %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>New</h3>
+<%= form_with url: "/posts/new"  do |form| %>
+  <%= form.text_field :title %><br>
+  <%= form.text_area(:body, :size => "20x10")  %><br>
+  <%= form.submit %>
+<% end %>
+
