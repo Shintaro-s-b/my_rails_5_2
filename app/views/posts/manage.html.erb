@@ -1,7 +1,14 @@
 <h1>Posts#manage</h1>
 <p>Find me in app/views/posts/manage.html.erb</p>
 
+<h3>New</h3>                                                                                                                                                                            
+<%= form_with url: "/posts/new"  do |form| %>                                                                                                                                           
+  <%= form.text_field :title %><br>                                                                                                                                                     
+  <%= form.text_area(:body, :size => "400x100" , :class => 'ckeditor')  %><br>                                                                                                          
+  <%= form.submit %>                                                                                                                                                                    
+<% end %>
 
+<h3>Posts</h3>
 <table border="1">
   <tr>
     <th>title</th>
@@ -11,14 +18,12 @@
     <tr>
       <td><%= post['title'] %></td>
       <td><%= post['body'].html_safe %></td>
+      <td>
+        <%= form_with url: "/posts/delete"  do |form| %>
+          <input type="hidden" name="post_id" value=<%= post.id %>>
+          <%= form.submit value: 'delete' %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 </table>
-
-<h3>New</h3>
-<%= form_with url: "/posts/new"  do |form| %>
-  <%= form.text_field :title %><br>
-  <%= form.text_area(:body, :size => "400x200" , :class => 'ckeditor')  %><br>
-  <%= form.submit %>
-<% end %>
-
