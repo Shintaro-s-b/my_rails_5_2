@@ -18,7 +18,7 @@
 <h3>New</h3>
 <%= form_with url: "/posts/new"  do |form| %>
   <%= form.text_field :title %><br>
-  <%= form.text_area(:body, :size => "20x10")  %><br>
+  <%= form.text_area(:body, :size => "400x200" , :class => 'ckeditor')  %><br>
   <%= form.submit %>
 <% end %>
 
