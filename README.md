@@ -22,3 +22,11 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+-----
+
+bundle install
+
+rails webpacker:install
+rails webpacker:install:react
+rails webpacker:install:vue
